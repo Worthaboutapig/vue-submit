@@ -1,13 +1,13 @@
 {
   "name": "vue-submit",
   "version": "0.1.0",
-  "private": true,
+  "description": "A pure Vue component submit button with a Ladda-style spinner",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "main": "./src/VueSubmit.js",
+  "main": "src/plugin/VueSubmit.js",
   "dependencies": {
     "vue": "^2.5.17"
   },
@@ -20,6 +20,19 @@
     "lint-staged": "^7.2.2",
     "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.5.17"
+  },
+  "homepage": "https://github.com/Worthaboutapig/vue-submit",
+  "keywords": [
+    "vue",
+    "ladda",
+    "submit",
+    "form",
+    "spinner"
+  ],
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Worthaboutapig/vue-submit"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
