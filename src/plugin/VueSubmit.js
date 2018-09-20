@@ -1,4 +1,4 @@
-import VueSubmit from '@/component/VueSubmit'
+import VueSubmit from '../component/VueSubmit'
 
 export default {
   install(Vue, { componentName = 'vue-submit' } = {}) {
