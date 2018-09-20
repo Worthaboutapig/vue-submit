@@ -45,8 +45,6 @@ export default {
       siblingStopPrimaryText: 'Click to confide in me',
       siblingStopSecondaryText: 'Waiting for my sibling to start spinning',
       siblingStop: false,
-      progress: 0,
-      progress2: 0
     }
   },
   computed: {
@@ -79,16 +77,6 @@ export default {
     onSiblingStop() {
       this.siblingStarted = false
       console.log('sibling stop: ' + this.siblingStarted)
-    },
-    onSubmitWithoutProgressBar() {},
-    but2() {
-      this.progress2++
-
-      if (this.progress2 < 100) {
-        setTimeout(() => this.but2(), 50)
-      } else {
-        this.progress2 = 0
-      }
     }
   }
 }

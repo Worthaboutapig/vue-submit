@@ -1,5 +1,17 @@
-.vue-submit {
+.vue-submit.spinner {
   position: relative;
+  border: 3.5px solid rgba(255, 255, 255, 0.5);
+  border-right-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  width: 1.33em;
+  height: 1.33em;
+  z-index: 2;
+  margin-left: 6px;
+  vertical-align: text-top;
+  top: -1px;
+  animation: spin 0.75s linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes spin {
