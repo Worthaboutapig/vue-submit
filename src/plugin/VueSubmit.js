@@ -5,3 +5,5 @@ export default {
     Vue.component(componentName, VueSubmit)
   }
 }
+
+export { VueSubmit }
