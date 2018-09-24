@@ -5,9 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-submit ./src/component/VueSubmit.vue"
   },
-  "main": "src/plugin/VueSubmit.js",
+  "module": "src/library.js",
+  "main": "dist/vue-submit.umd.js",
+  "unpkg": "dist/vue-submit.umd.js",
   "dependencies": {
     "vue": "^2.5.17"
   },
@@ -46,5 +49,10 @@
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*"
+  ]
 }
