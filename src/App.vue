@@ -59,8 +59,7 @@ export default {
     }
   },
   watch: {
-    siblingStarted(newSiblingStarted, oldValue) {
-      console.log('newSiblingStarted: ' + newSiblingStarted + ', ' + oldValue)
+    siblingStarted(newSiblingStarted) {
       if (newSiblingStarted) {
         this.siblingStopPrimaryText = "I'm spinning around, get out of my way!"
         this.siblingStopSecondaryText = 'Click me to stop my sibling'
@@ -76,7 +75,6 @@ export default {
     },
     onSiblingStop() {
       this.siblingStarted = false
-      console.log('sibling stop: ' + this.siblingStarted)
     }
   }
 }
