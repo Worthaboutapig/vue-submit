@@ -43,8 +43,7 @@ export default {
     return {
       siblingStarted: false,
       siblingStopPrimaryText: 'Click to confide in me',
-      siblingStopSecondaryText: 'Waiting for my sibling to start spinning',
-      siblingStop: false
+      siblingStopSecondaryText: 'Waiting for my sibling to start spinning'
     }
   },
   computed: {
