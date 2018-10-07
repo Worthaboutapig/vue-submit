@@ -1,7 +1,8 @@
 <template lang='pug'>
   button(class='vue-submit' type='submit' :disabled='locked' @click='click')
     slot Submit
-    template(v-if='started')
+
+    template(v-if='started_')
       span.vue-submit.spinner(v-if='showSpinner')
 </template>
 
@@ -17,7 +18,9 @@ export default {
     started: Boolean
   },
   data() {
-    return {}
+    return {
+      started_: false
+    }
   },
   computed: {
     locked() {
@@ -35,7 +38,7 @@ export default {
   watch: {
     started(newValue) {
       if (newValue) {
-        this.start()
+        this.onStart()
       } else {
         this.onStop()
       }
@@ -43,19 +46,17 @@ export default {
   },
   methods: {
     click() {
-      if (!this.started) {
-        this.$emit('click')
-        this.start()
+      this.$emit('clicked')
+      if (!this.started_) {
+        this.onStart()
       }
     },
-    start() {
-      if (this.started) {
-        return
-      }
-
+    onStart() {
+      this.started_ = true
       this.$emit('started')
     },
     onStop() {
+      this.started_ = false
       this.$emit('stopped')
     }
   }

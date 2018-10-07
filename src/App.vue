@@ -4,7 +4,7 @@
 
   .row.mt-4
     .col
-      h2 I disabled button
+      h2 A disabled button
 
     .col
       form(method='GET')
@@ -14,7 +14,7 @@
 
   .row.mt-4
     .col
-      h2 A button that will continue spinning and progressing forever
+      h2 A button that will continue spinning forever
 
     .col
       form(method='GET' @submit.prevent='onSubmitDummy')
@@ -43,8 +43,7 @@ export default {
     return {
       siblingStarted: false,
       siblingStopPrimaryText: 'Click to confide in me',
-      siblingStopSecondaryText: 'Waiting for my sibling to start spinning',
-      siblingStop: false,
+      siblingStopSecondaryText: 'Waiting for my sibling to start spinning'
     }
   },
   computed: {
@@ -59,8 +58,7 @@ export default {
     }
   },
   watch: {
-    siblingStarted(newSiblingStarted, oldValue) {
-      console.log('newSiblingStarted: ' + newSiblingStarted + ', ' + oldValue)
+    siblingStarted(newSiblingStarted) {
       if (newSiblingStarted) {
         this.siblingStopPrimaryText = "I'm spinning around, get out of my way!"
         this.siblingStopSecondaryText = 'Click me to stop my sibling'
@@ -72,11 +70,10 @@ export default {
   },
   methods: {
     onSubmitDummy() {
-      // a dummy function to allow the 'prevent' to work and prevent actual form subission
+      // a dummy function to allow the 'prevent' to work and prevent actual form submission
     },
     onSiblingStop() {
       this.siblingStarted = false
-      console.log('sibling stop: ' + this.siblingStarted)
     }
   }
 }
