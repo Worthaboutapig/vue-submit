@@ -44,7 +44,7 @@ export default {
   methods: {
     click() {
       if (!this.started) {
-        this.$emit('clicked')
+        this.$emit('click')
         this.start()
       }
     },
