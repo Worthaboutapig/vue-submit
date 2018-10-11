@@ -1,5 +1,5 @@
 <template lang='pug'>
-  button(class='vue-submit' type='submit' :disabled='locked' @click='click')
+  button(class='vue-submit' :type='type' :disabled='locked' @click='click')
     slot Submit
 
     template(v-if='started_')
@@ -8,14 +8,20 @@
 
 <script>
 import './submit.css'
-import './utils'
+import { defaultButtonType } from './utils'
 
 export default {
   name: 'vue-submit',
   props: {
     disabled: Boolean,
     hideSpinner: Boolean,
-    started: Boolean
+    started: Boolean,
+    type: {
+      type: String,
+      default: function() {
+        return defaultButtonType()
+      }
+    }
   },
   data() {
     return {

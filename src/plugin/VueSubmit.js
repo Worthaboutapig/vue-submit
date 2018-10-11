@@ -1,7 +1,9 @@
 import VueSubmit from '../component/VueSubmit'
+import { defaultButtonType as setDefaultButtonType } from '../component/utils'
 
 export default {
-  install(Vue, { componentName = 'vue-submit' } = {}) {
+  install(Vue, { defaultButtonType = 'submit', componentName = 'vue-submit' } = {}) {
+    setDefaultButtonType(defaultButtonType)
     Vue.component(componentName, VueSubmit)
   }
 }
