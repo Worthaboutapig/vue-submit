@@ -21,11 +21,11 @@ Using Vue (with Webpack) in your `src/main.js` or other webpack entry file:
 import Vue from 'vue'
 import { Plugin } from 'vue-submit'
 
-// To use the default options: component tag-name
+// To use the default options: { defaultButtonType = 'submit', tagName = 'vue-submit' }
 Vue.use(Plugin)
 
 // Or choose a different tag name for the component
-Vue.use(Plugin, { componentName: 'an-alternative-vue-submit-tag-name' })
+Vue.use(Plugin, { tagName: 'an-alternative-vue-submit-tag-name' })
 
 // Or choose the default button type for the button created. By default this is 'submit',
 //  but you may want 'button' to use the spin functionality without submitting a form
