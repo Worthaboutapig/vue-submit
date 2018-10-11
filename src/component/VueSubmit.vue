@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     click() {
-      this.$emit('clicked')
+      this.$emit('click')
       if (!this.started_) {
         this.onStart()
       }
