@@ -2,7 +2,8 @@
   button(:id='id' class='vue-submit' :type='type' :disabled='locked' @click='click')
     slot Submit
 
-    template(v-if='started_')
+    p isStarted: {{ isStarted }}
+    template(v-if='isStarted_')
       span.vue-submit.spinner(v-if='showSpinner')
 </template>
 
@@ -19,7 +20,11 @@ export default {
     },
     disabled: Boolean,
     hideSpinner: Boolean,
-    started: Boolean,
+    isStarted: Boolean,
+    autoStart: {
+      type: Boolean,
+      default: true
+    },
     type: {
       type: String,
       default: function() {
@@ -29,7 +34,7 @@ export default {
   },
   data() {
     return {
-      started_: false
+      isStarted_: this.isStarted
     }
   },
   computed: {
@@ -46,28 +51,36 @@ export default {
     }
   },
   watch: {
-    started(newValue) {
+    isStarted(newValue) {
+      //console.log('watch: ' + newValue)
       if (newValue) {
-        this.onStart()
+        if (!this.isStarted_) {
+          this.start()
+        }
       } else {
-        this.onStop()
+        if (this.isStarted_) {
+          this.stop()
+        }
       }
     }
   },
   methods: {
     click(event) {
-      this.$emit('click', event)
-      if (!this.started_) {
-        this.onStart()
+      if (this.autoStart && !this.isStarted_) {
+        this.start()
       }
+      //console.log('click s: ' + this.isStarted + ', click s_: ' + this.isStarted_)
+      this.$emit('click', event)
     },
-    onStart() {
-      this.started_ = true
-      this.$emit('started', { id: this.id })
+    start() {
+      this.isStarted_ = true
+      //console.log('start: ' + this.id)
+      this.$emit('start', { id: this.id })
     },
-    onStop() {
-      this.started_ = false
-      this.$emit('stopped', { id: this.id })
+    stop() {
+      this.isStarted_ = false
+      //console.log('stop: ' + this.id)
+      this.$emit('stop', { id: this.id })
     }
   }
 }
