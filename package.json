@@ -1,6 +1,6 @@
 {
   "name": "vue-submit",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A pure Vue component submit button with a Ladda-style spinner",
   "scripts": {
     "serve": "vue-cli-service serve",
