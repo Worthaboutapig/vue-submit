@@ -38,7 +38,8 @@ export default {
   },
   computed: {
     locked() {
-      return !this.enabled || this.started_
+      const locked = !!(this.started_ | !this.enabled)
+      return locked
     },
     enabled() {
       // Because Boolean props are 'false' by default :S
