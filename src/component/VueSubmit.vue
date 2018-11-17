@@ -3,7 +3,7 @@
     slot Submit
 
     template(v-if='started_')
-      span.vue-submit.spinner(v-if='showSpinner')
+      span.spinner(v-if='showSpinner')
 </template>
 
 <script>
