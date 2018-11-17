@@ -1,4 +1,8 @@
-.vue-submit.spinner {
+button.vue-submit[disabled] {
+  cursor: not-allowed;
+}
+
+button.vue-submit.spinner {
   position: relative;
   border: 3.5px solid rgba(255, 255, 255, 0.5);
   border-right-color: #fff;
