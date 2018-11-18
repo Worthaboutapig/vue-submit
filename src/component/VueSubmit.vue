@@ -1,9 +1,7 @@
 <template lang='pug'>
   button(:id='id' class='vue-submit' :type='type' :disabled='locked' @click='click')
     slot Submit
-
-    template(v-if='started_')
-      span.spinner(v-if='showSpinner')
+    span.spinner(v-if='showSpinner')
 </template>
 
 <script>
@@ -46,8 +44,9 @@ export default {
       return !this.disabled
     },
     showSpinner() {
+      const showSpinner = !!(this.started_ | !this.hideSpinner)
       // Because Boolean props are 'false' by default :S
-      return !this.hideSpinner
+      return showSpinner
     }
   },
   watch: {
