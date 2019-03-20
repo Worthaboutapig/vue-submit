@@ -6,7 +6,7 @@ button(:id='id' class='vue-submit' :type='type' :disabled='locked' @click='click
 
 <script>
 import './submit.css'
-import { defaultButtonType } from './utils'
+import getDefaultButtonType from './defaultButtonType'
 
 export default {
   name: 'vue-submit',
@@ -17,8 +17,7 @@ export default {
     startOnClick: { type: Boolean, default: true },
     type: {
       type: String,
-      default: function() {
-        return defaultButtonType()
+      default: () => getDefaultButtonType()
       }
     }
   },
