@@ -1,24 +1,49 @@
-<template lang='pug'>
-button(:id='id' class='vue-submit' :type='type' :disabled='locked' @click='click')
+<template lang="pug">
+button.vue-submit(:id='id' :type='type' :disabled='locked' @click='click' :class='buttonClasses_')
+  span.spinner(v-if='this.running && this.position === Positions.Before' :class='spinnerClasses')
   slot Submit
-  span.spinner(v-if='this.running')
+  span.spinner(v-if='this.running && this.position === Positions.After' :class='spinnerClasses')
 </template>
 
 <script>
 import './submit.css'
 import getDefaultButtonType from './defaultButtonType'
+import Positions from './Positions'
 
 export default {
   name: 'vue-submit',
   props: {
-    id: { type: String, required: true },
+    id: {
+      type: String,
+      required: true
+    },
     disabled: Boolean,
     running: Boolean,
-    startOnClick: { type: Boolean, default: true },
+    startOnClick: {
+      type: Boolean,
+      default: () => true
+    },
+    position: {
+      type: String,
+      default: () => Positions.Before,
+      validator: value => value === Positions.Before || value === Positions.After
+    },
     type: {
       type: String,
       default: () => getDefaultButtonType()
-      }
+    },
+    buttonClasses: {
+      type: String,
+      default: () => ''
+    },
+    spinnerClasses: {
+      type: String,
+      default: () => ''
+    }
+  },
+  data() {
+    return {
+      Positions
     }
   },
   computed: {
@@ -29,6 +54,10 @@ export default {
     enabled() {
       // Because Boolean props are 'false' by default :S
       return !this.disabled
+    },
+    buttonClasses_() {
+      const classes = this.buttonClasses + (this.running ? 'running' : '')
+      return classes
     }
   },
   watch: {
